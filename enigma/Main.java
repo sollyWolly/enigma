@@ -175,11 +175,11 @@ public final class Main {
     /** Set M according to the specification given on SETTINGS,
      *  which must have the format specified in the assignment. */
     private void setUp(Machine M, String settings) {
-        Scanner bruh = new Scanner(settings);
-        bruh.next();
+        Scanner b = new Scanner(settings);
+        b.next();
         String[] insert = new String[M.numRotors()];
         for (int i = 0; i < M.numRotors(); i += 1) {
-            insert[i] = bruh.next();
+            insert[i] = b.next();
         }
         for (int i = 0; i < insert.length - 1; i += 1) {
             for (int j = 0; j < insert.length - 1; j += 1) {
@@ -188,18 +188,18 @@ public final class Main {
                 }
             }
         }
-        if (!bruh.hasNext()) {
+        if (!b.hasNext()) {
             throw error("bad wheel settings");
         }
-        String poop = bruh.next();
+        String s1 = b.next();
         M.insertRotors(insert);
-        M.setRotors(poop);
+        M.setRotors(s1);
         String bang = "";
-        while (bruh.hasNext("\\s*[(].*[)]")) {
-            bang += bruh.next();
+        while (b.hasNext("\\s*[(].*[)]")) {
+            bang += b.next();
         }
         M.setPlugboard(new Permutation(bang, _alphabet));
-        if (bruh.hasNext()) {
+        if (b.hasNext()) {
 
         }
     }
